@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday My Love ❤️</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  section { min-height: 30vh; display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; text-align:center; }
+
+  /* Animated Gradient Background */
+  @keyframes gradient {
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+  }
+  body {
+    background: linear-gradient(-45deg, #ff758c, #ff7eb3, #feb47b, #ff6a88);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    overflow-x:hidden;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Watermark Pattern */
+  body::before {
+    content: "আমি তোমাকে ভালোবাসি শ্রেয়া   আমি তোমাকে ভালোবাসি শ্রেয়া   ";
+    position: fixed;
+    top: 0; left: 0;
+    width: 200%; height: 200%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(255, 255, 200, 0.12);
+    transform: rotate(-30deg);
+    white-space: nowrap;
+    line-height: 3rem;
+    z-index: -2;
+    pointer-events: none;
+    animation: watermarkFade 8s ease-in-out infinite alternate, watermarkMove 40s linear infinite;
+  }
+  @keyframes watermarkFade {
+    0% { opacity: 0.08; }
+    50% { opacity: 0.18; }
+    100% { opacity: 0.1; }
+  }
+  @keyframes watermarkMove {
+    from { transform: translateY(0) rotate(-30deg); }
+    to { transform: translateY(-200px) rotate(-30deg); }
+  }
+
+  /* Beating Human Heart Background */
+  #heart-bg {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    font-size: 6rem;
+    opacity: 0.08;
+    z-index: -1;
+    animation: heartbeat 1.2s infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); opacity:0.08; }
+    50% { transform: scale(1.2); opacity:0.15; }
+  }
+
+  /* Floating Hearts */
+  @keyframes float {0%{transform:translateY(0) scale(1);opacity:1;}100%{transform:translateY(-100vh) scale(1.5);opacity:0;}}
+  .heart{position:absolute;bottom:-50px;font-size:1.5rem;color:rgba(255,105,180,0.8);animation:float 10s linear infinite;pointer-events:none;}
+
+  /* Sparkles */
+  .sparkle {position:absolute;width:5px;height:5px;border-radius:50%;background:white;opacity:0.8;animation: twinkle 3s infinite;}
+  @keyframes twinkle {0%,100%{opacity:0.2;transform:scale(0.5);}50%{opacity:1;transform:scale(1);}}
+
+  /* Falling Rose Petals */
+  @keyframes fall {0% { transform: translateY(-10%) rotate(0deg); opacity: 1;}100% { transform: translateY(110vh) rotate(360deg); opacity: 0.7;}}
+  .petal {position:absolute;top:-50px;font-size:1.2rem;animation: fall linear infinite;color:#ff4d6d;opacity:0.9;pointer-events:none;}
+
+  /* Typewriter */
+  .typewriter {border-right:2px solid white;white-space:nowrap;overflow:hidden;animation: typing 6s steps(40,end), blink .8s infinite;}
+  @keyframes typing {from{width:0;}to{width:100%;}}
+  @keyframes blink {50%{border-color:transparent;}}
+
+  /* Glass & Glow */
+  .glow{box-shadow:0 0 20px rgba(255,0,100,.7),0 0 40px rgba(255,50,150,.5);}
+  .glass{background:rgba(255,255,255,.2);backdrop-filter:blur(12px);border-radius:20px;}
+
+  /* Scroll Indicator */
+  .scroll-indicator{position:absolute;bottom:20px;font-size:2rem;color:white;animation:bounce 1.5s infinite;}
+  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+
+  /* Heartbeat hover */
+  .heartbeat:hover{animation:beat .6s infinite alternate;}
+  @keyframes beat{to{transform:scale(1.1);}}
+
+  /* Music Visualizer */
+  #visualizer{position:absolute;top:0;left:50%;transform:translateX(-50%);display:flex;gap:4px;height:30px;}
+  #visualizer span{width:4px;background:#fff;border-radius:3px;animation: bounceBar 1s infinite;}
+  #visualizer span:nth-child(2){animation-delay:.2s;}#visualizer span:nth-child(3){animation-delay:.4s;}#visualizer span:nth-child(4){animation-delay:.6s;}
+  @keyframes bounceBar{0%,100%{height:10px;}50%{height:30px;}}
+
+  /* Auto-scroll Gallery */
+  @keyframes autoScroll {0%{ transform: translateY(0);}100%{ transform: translateY(-50%);}}
+  .auto-scroll { display:inline-block; animation: autoScroll 40s linear infinite; }
+  .auto-scroll:hover { animation-play-state: paused; }
+
+  /* Lightbox */
+  #lightbox {position: fixed; inset: 0;background: rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;z-index:1000;cursor: zoom-out;}
+  #lightbox img {max-width:95%; max-height:90%;border-radius:12px;box-shadow:0 0 25px rgba(255,255,255,0.6);}
+
+  /* Firework */
+  .firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: yellow;
+    pointer-events: none;
+    animation: explode 1s ease-out forwards;
+    z-index: 2000;
+  }
+  @keyframes explode {
+    from { transform: scale(0.2); opacity: 1;}
+    to { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0;}
+  }
+</style>
+</head>
+<body class="font-sans relative">
+
+<!-- Beating Heart Background -->
+<div id="heart-bg">❤️</div>
+
+<!-- Floating Decorations -->
+<div id="hearts"></div>
+<div id="sparkles"></div>
+<div id="petals"></div>
+<div id="visualizer"><span></span><span></span><span></span><span></span></div>
+
+<!-- Calendar -->
+<section id="calendar" class="px-4">
+  <div class="relative bg-gradient-to-br from-pink-600 to-red-500 text-white font-extrabold 
+            text-5xl md:text-7xl w-28 h-28 md:w-40 md:h-40 flex items-center justify-center 
+            rounded-2xl glow mx-auto">
+
+  <!-- Number stays centered -->
+  <span class="absolute inset-0 flex items-center justify-center">30</span>
+
+  <!-- Button at bottom -->
+  <button onclick="launchCelebration()" 
+    class="absolute bottom-2 text-xs md:text-sm px-3 py-1 bg-yellow-400 text-red-700 font-bold rounded shadow-md hover:scale-105 transition">
+    ✨ Press Here ✨
+  </button>
+</div>
+
+</section>
+<div id="celebrationMsg" style="
+  position:fixed; top:40%; left:50%; transform:translate(-50%,-50%);
+  font-size:2rem; font-weight:bold; color:#fff; background:rgba(255,0,100,0.7);
+  padding:1rem 2rem; border-radius:12px; box-shadow:0 0 20px rgba(255,255,255,.8);
+  display:none; z-index:3000; animation:fadeInOut 3s ease forwards;">
+  🎉 Happy Birthday My Love 🎊
+</div>
+
+
+<style>
+  .confetti {
+    position: fixed;
+    width: 8px;
+    height: 14px;
+    top: -10px;
+    opacity: 0.9;
+    z-index: 2500;
+    animation: fallConfetti 3s linear forwards;
+  }
+  @keyframes fallConfetti {
+    to { transform: translateY(100vh) rotate(360deg); opacity:0; }
+  }
+  .firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: yellow;
+    pointer-events: none;
+    animation: explode 1s ease-out forwards;
+    z-index: 2600;
+  }
+  @keyframes explode {
+    from { transform: scale(0.2); opacity: 1;}
+    to { transform: scale(1.5) translate(var(--x), var(--y)); opacity: 0;}
+  }
+  @keyframes fadeInOut {
+    0% { opacity:0; transform:translate(-50%,-60%);}
+    20% { opacity:1; transform:translate(-50%,-50%);}
+    80% { opacity:1;}
+    100% { opacity:0; transform:translate(-50%,-40%);}
+  }
+</style>
+
+<!-- Hero -->
+<section id="hero" class="px-4 text-center">
+  <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-500 to-red-600 animate-pulse">
+    🎉 Happy Birthday My Love ❤️
+  </h1>
+  <p class="mt-6 text-lg md:text-2xl text-white italic typewriter"><b>"You are the most beautiful part of my life 💕"</b></p>
+</section>
+
+<!-- Memories -->
+<section id="memories" class="px-2 md:px-6">
+  <div class="flex flex-col md:flex-row w-full max-w-6xl">
+    <!-- Carousel -->
+    <div class="w-full md:w-2/3 p-2 md:p-4 flex justify-center">
+      <div class="relative h-[300px] md:h-[650px] w-full md:w-[650px] overflow-hidden rounded-2xl glow">
+        <div id="carousel" class="flex transition-transform duration-700"></div>
+      </div>
+    </div>
+    <!-- Gallery -->
+    <div class="w-full md:w-1/3 h-[250px] md:h-[650px] overflow-hidden p-2">
+      <div id="gallery" class="auto-scroll grid grid-cols-3 gap-1 md:gap-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Secret -->
+<section id="secret" class="px-4">
+  <button onclick="showSecret()" class="heartbeat bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold py-2 px-6 md:py-3 md:px-8 rounded-xl shadow-xl glow">💌 Secret Message</button>
+  <div id="secretMsg" class="hidden glass glow mt-6 p-4 md:p-6 w-full md:w-2/3 text-pink-700 font-semibold text-base md:text-lg leading-relaxed mx-auto">
+  <p>শুভ জন্মদিন সোনাই 😘🥰🥳🤩</p>
+  <p>শুভ জন্মদিনের অনেক অনেক শুভেচ্ছা জানাই 🥰😘</p>
+  <p>দেখ সোনা আমাদের জীবনে অনেক সমস্যা আসে, অনেক প্রতিকূল পরিস্থিতি আসে, সেগুলোকে অতিক্রম করে আমাদের সামনের দিকে এগিয়ে চলতে হবে l</p>
+  <p>আমি যখন রেগে যাই অনেক ভুলভাল কথা তোকে বলে ফেলি, অনেক গালাগালি দিয়ে ফেলি, তারপর তোকে আর ফোন করিও না, পরের দিন নিজের ভুলটাও স্বীকার করি না,  আরো অনেক ভুলভাল জিনিস করে ফেলি | তোকে অনেক কষ্ট দিয়েছি l</p>
+  <p>তাই সব কিছু এই শেষ বারের মতো আমাকে ক্ষমা করে দে l আমি জীবন তোকে অনেক কষ্ট দিয়েছি কিন্তু তুই এই শেষ বারের মতো আমায় ক্ষমা করে দে l আমি সব কিছু ঠিক করে নেবো দেখিস l নিজেকে সম্পূর্ণ বদলে নেবো l তোকে আর কোনো কষ্ট দেবেনা কোনোদিনও l আমাকে নিজের ভুল শুধরে নেওয়ার একটা শেষ সুযোগ দে দয়া করে l এইসবের জন্য আমাদের এতদিনের ভালোবাসাটাকে, আমাদের সম্পর্কটা দয়া করে নষ্ট হতে দিস না l</p>
+  <p>এই কঠিন সময়ে আমার হাতটা তুই শুধু ধরে রাখতে আমাকে সাহায্য কর, দেখবি সমস্ত প্রতিকূল পরিস্থিতি আমরা একসাথে পার করতে পারবো l তুই শুধু আমার হাতটা এই কঠিন পরিস্থিতিতে শক্ত করে ধরে রাখl</p>
+  <p>তোর এই শুভ জন্মদিনে তোকে শুভেচ্ছা জানিয়ে <strong>"তোর অনি"</strong> তোর কাছে একটা আব্দার করছে — যে সব ভুল বোঝাবুঝি কে দূরে রেখে, আমাদের সম্পর্কটাকে সঠিক মর্যাদা দিয়ে সব কিছু নতুন ভাবে শুরু করি ||</p>
+</div>
+</section>
+
+<!-- Love -->
+<section id="love" class="px-4">
+  <div class="glass glow p-6 md:p-10 w-full md:w-2/3">
+    <h2 class="text-2xl md:text-4xl font-bold text-pink-600">💕 <b>My Promise & Love 💕</b></h2>
+    <p class="mt-6 text-lg md:text-xl text-gray-700 italic">"Every moment with you is a memory I treasure.<br>You are my happiness, my dream, and my forever.<br>I love you more than words can express ❤️"</p>
+    <div class="mt-8 text-base md:text-2xl text-pink-700 font-semibold space-y-2">
+      <p>💖 "তুমি আছ বলেই জীবনটা এত সুন্দর মনে হয়।"</p>
+      <p>💖 "তুমি পাশে থাকলেই পৃথিবীটা যেন নতুন লাগে।"</p>
+      <p>💖 "আমার সমস্ত স্বপ্ন, আশা আর ভালোবাসা কেবল তোমাকেই ঘিরে।"</p>
+      <p>💖 "তুমি আমার হৃদয়ের সবচেয়ে মিষ্টি গান।"</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="text-center text-white p-6">
+  <p class="text-lg md:text-xl">Made with ❤️ by <span class="font-bold">Your Ani..</span></p>
+  <p class="italic">Forever Yours 💍</p>
+</footer>
+
+<!-- Music -->
+<audio id="bgMusic" loop>
+  <source src="music/romantic.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" class="fixed bottom-6 right-6 bg-pink-600 text-white p-4 rounded-full shadow-lg glow">🔇</button>
+
+<!-- Lightbox -->
+<div id="lightbox"><img src="" alt="preview"></div>
+
+<script>
+  // Firework Burst
+  function launchCelebration(){
+  // Show message
+  const msg=document.getElementById("celebrationMsg");
+  msg.style.display="block";
+  setTimeout(()=>{msg.style.display="none";},3000);
+
+  // Confetti burst
+  for(let i=0;i<100;i++){
+    let c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*window.innerWidth+"px";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+
+  // Fireworks burst
+  for(let i=0;i<60;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    let angle=Math.random()*2*Math.PI;
+    let distance=80+Math.random()*150;
+    f.style.setProperty("--x", Math.cos(angle)*distance+"px");
+    f.style.setProperty("--y", Math.sin(angle)*distance+"px");
+    f.style.left=(window.innerWidth/2)+"px";
+    f.style.top=(window.innerHeight/2.5)+"px";
+    f.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+  }
+
+  // Lightbox
+  const lightbox=document.getElementById("lightbox"),lightboxImg=lightbox.querySelector("img");
+  function openLightbox(src){lightboxImg.src=src;lightbox.style.display="flex";document.body.style.overflow="hidden";}
+  function closeLightbox(){lightbox.style.display="none";lightboxImg.src="";document.body.style.overflow="";}
+  lightbox.addEventListener("click",()=>closeLightbox());
+  document.addEventListener("keydown",(e)=>{if(e.key==="Escape")closeLightbox();});
+
+  // Gallery
+  const gallery=document.getElementById("gallery");
+  const frag=document.createDocumentFragment();
+  for(let i=1;i<=66;i++){
+    const img=document.createElement("img");
+    img.src=`photo/i${i}.jpeg`;
+    img.alt=`Memory ${i}`;
+    img.loading="lazy";
+    img.className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-lg hover:scale-110 transition glow cursor-pointer";
+    frag.appendChild(img);
+  }
+  gallery.appendChild(frag);
+
+  const clone=gallery.cloneNode(true);
+  while(clone.firstChild)gallery.appendChild(clone.firstChild);
+
+  gallery.addEventListener("click",(e)=>{
+    const img=e.target.closest("img");
+    if(!img)return;
+    openLightbox(img.src);
+  });
+
+  // Carousel
+  const carousel=document.getElementById("carousel");
+  for(let i=1;i<=36;i++){
+    const img=document.createElement("img");
+    img.src=`memories/m${i}.jpeg`;
+    img.className="h-[300px] md:h-[650px] w-full md:w-[650px] object-cover rounded-2xl flex-shrink-0 cursor-pointer";
+    img.addEventListener("click",()=>openLightbox(img.src));
+    carousel.appendChild(img);
+  }
+  let idx=0;
+  setInterval(()=>{
+    idx=(idx+1)%carousel.children.length;
+    carousel.style.transform=`translateX(-${idx*carousel.children[0].clientWidth}px)`;
+  },3000);
+
+  // Hearts
+  function createHearts(){const h=document.getElementById("hearts");for(let i=0;i<15;i++){let d=document.createElement("div");d.className="heart";d.style.left=Math.random()*window.innerWidth+"px";d.style.animationDuration=5+Math.random()*10+"s";d.innerText="❤️";h.appendChild(d);}}createHearts();
+
+  // Sparkles
+  function createSparkles(){const s=document.getElementById("sparkles");for(let i=0;i<30;i++){let sp=document.createElement("div");sp.className="sparkle";sp.style.left=Math.random()*window.innerWidth+"px";sp.style.top=Math.random()*window.innerHeight/1.5+"px";sp.style.animationDelay=Math.random()*3+"s";s.appendChild(sp);}}createSparkles();
+
+  // Petals
+  function createPetals(){const p=document.getElementById("petals");for(let i=0;i<20;i++){let petal=document.createElement("div");petal.className="petal";petal.innerText="🌹";petal.style.left=Math.random()*window.innerWidth+"px";petal.style.fontSize=16+Math.random()*16+"px";petal.style.animationDuration=5+Math.random()*10+"s";petal.style.animationDelay=Math.random()*10+"s";p.appendChild(petal);}}createPetals();
+
+  // Secret
+  function showSecret(){document.getElementById("secretMsg").classList.remove("hidden");}
+  window.showSecret=showSecret;
+
+  // Music toggle
+   const music = document.getElementById("bgMusic"),
+        btn = document.getElementById("musicToggle");
+  let play = false;  // Default is OFF
+
+  btn.onclick = () => {
+    if (play) {
+      music.pause();
+      btn.textContent = "🔇";
+    } else {
+      music.play();
+      btn.textContent = "🔊";
+    }
+    play = !play;
+  };
+
+</script>
+
+</body>
+</html>
+
+
